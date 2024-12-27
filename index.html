@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yılbaşı Çekilişi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .login-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            display: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <h2>Yılbaşı Çekilişi</h2>
+        <input type="password" id="password" placeholder="Şifrenizi girin">
+        <button onclick="checkPassword()">Hediye Arkadaşımı Göster</button>
+        <p id="error" class="error">Geçersiz şifre!</p>
+    </div>
+    <div id="result" class="result">
+        <h3>Hediye alacağınız kişi:</h3>
+        <p id="giftPerson"></p>
+    </div>
+
+    <script>
+        // Kişiler ve şifreleri (gerçek uygulamada bu bilgileri daha güvenli bir şekilde saklamalısınız)
+        const participants = {
+            "sifre31": {name: "ebu", recipient: "kaan"},
+            "sifre3152": {name: "ekrem", recipient: "Emir"},
+            "sifre315231": {name: "kaan", recipient: "omer"},
+            "sifre31523152": {name: "ender", recipient: "ebu"},
+            "sifre3152315231": {name: "emir", recipient: "alpis"},
+            "sifre315231523152": {name: "alpis", recipient: "ekrem"},
+            "sifre31523152315231": {name: "omer", recipient: "ender"}
+        };
+
+        function checkPassword() {
+            const password = document.getElementById("password").value;
+            const error = document.getElementById("error");
+            const result = document.getElementById("result");
+            const giftPerson = document.getElementById("giftPerson");
+
+            if (participants[password]) {
+                error.style.display = "none";
+                result.style.display = "block";
+                giftPerson.textContent = participants[password].recipient;
+            } else {
+                error.style.display = "block";
+                result.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>king.html
